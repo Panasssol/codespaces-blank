@@ -1,0 +1,17 @@
+body {
+    background-color:gray;
+    color:white;
+}
+
+.links{
+    color:blueviolet;
+    font-size: 25px;
+}
+
+#firsth2 h2{
+    color:darkred;
+}
+
+#secondh2 h2{
+    color:blue;
+}
