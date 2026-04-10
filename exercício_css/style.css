@@ -1,0 +1,133 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+header nav a:hover {
+    background-color: #555;
+}
+
+.secao-noticias {
+    margin: 40px 0;
+    padding-top: 20px;
+}
+
+.secao-noticias h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #ccc;
+}
+
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+article {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s;
+}
+
+article:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+article img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    background-color: #ddd;
+}
+
+article header time {
+    display: block;
+    font-size: 0.85rem;
+    color: #777;
+    padding: 15px 15px 5px;
+}
+
+article h3 {
+    padding: 0 15px;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+article p {
+    padding: 0 15px 15px;
+    color: #444;
+    line-height: 1.5;
+    flex-grow: 1;
+}
+
+article a {
+    display: block;
+    text-align: center;
+    padding: 15px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    background-color: #333;
+    transition: filter 0.3s;
+}
+
+article a:hover {
+    filter: brightness(1.2);
+}
+
+#sports h2 { border-bottom-color: #27ae60; color: #27ae60; }
+#sports article a { background-color: #27ae60; }
+
+#economy h2 { border-bottom-color: #2980b9; color: #2980b9; }
+#economy article a { background-color: #2980b9; }
+
+#entertainment h2 { border-bottom-color: #8e44ad; color: #8e44ad; }
+#entertainment article a { background-color: #8e44ad; }
+
+#technology h2 { border-bottom-color: #d35400; color: #d35400; }
+#technology article a { background-color: #d35400; }
