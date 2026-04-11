@@ -15,15 +15,13 @@
             <h1>Nome da loja</h1>
             <nav>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Produtos</a></li>
-                    <li><a href="#">Sobre</a></li>
-                    <li><a href="#">Contato</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#contato">Contato</a></li>
                 </ul>
             </nav>
         </div>
     </header>
-    <section>
+    <section id="sobre">
         <div class="container">
             <img class="store-front" src="./images/loja.jpg" alt="Fachada da loja" />
             <div>
@@ -38,5 +36,45 @@
             </div>
         </div>
     </section>
+    <section id="contato">
+        <div class="container">
+            <h2>Contato</h2>
+            <div class="contato-methods">
+                <div>
+                    <h3>Fale conosco</h3>
+                    <form>
+                        <input type="text" placeholder="Seu nome" required />
+                        <input type="email" placeholder="Seu email" required />
+                        <input type="tel" placeholder="Seu telefone (opcional)" />
+                        <textarea placeholder="Sua mensagem" required ></textarea>
+                        <button type="submit">Enviar</button>
+                    </form>
+                </div>
+                <div>
+                    <h3>Nos acompannhe</h3>
+                    <ul class="social-links">
+                        <li>
+                            <a href="#"><img src="./images/facebook.png" alt="Facebook" /></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="./images/instagram.png" alt="Instagram" /></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="./images/youtube.png" alt="Youtube" /></a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Venha até nós</h3>
+                    <p>Rua exemplo, 123 - Caxias do Sul</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <p>&copy; Todos os direitos reservados - 2026</p>
+        </div>
+    </footer>
 </body>
 </html>
