@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Bootstrap - Carousel e Grid Responsivo</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .carousel-item img {
+            height: 500px;
+            object-fit: cover;
+        }
+
+        .carousel-caption {
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .section-title {
+            margin: 50px 0 30px 0;
+            text-align: center;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: #0d6efd;
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+
+        .badge-custom {
+            font-size: 0.75rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">
+                <i class="bi bi-bootstrap-fill"></i> Meu Projeto
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Sobre</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Serviços</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contato</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Carousel -->
+    <div id="carouselPrincipal" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselPrincipal" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#carouselPrincipal" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#carouselPrincipal" data-bs-slide-to="2"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://picsum.photos/1200/500?random=1" class="d-block w-100" alt="Slide 1">
+                <div class="carousel-caption d-none d-md-block">
+                    <h2>Bem-vindo ao Nosso Site</h2>
+                    <p>Descubra as melhores soluções para o seu negócio.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://picsum.photos/1200/500?random=2" class="d-block w-100" alt="Slide 2">
+                <div class="carousel-caption d-none d-md-block">
+                    <h2>Tecnologia e Inovação</h2>
+                    <p>Soluções modernas que transformam sua experiência.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://picsum.photos/1200/500?random=3" class="d-block w-100" alt="Slide 3">
+                <div class="carousel-caption d-none d-md-block">
+                    <h2>Qualidade Garantida</h2>
+                    <p>Trabalhamos com excelência em cada detalhe.</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselPrincipal" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+            <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselPrincipal" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+            <span class="visually-hidden">Próximo</span>
+        </button>
+    </div>
+
+    <!-- Grid de Cards -->
+    <div class="container">
+        <h2 class="section-title">Nossos Produtos</h2>
+
+        <!-- row-cols: 1 no mobile, 2 no tablet (md), 3 no desktop (lg) -->
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+            <div class="col">
+                <div class="card h-100">
+                    <img src="https://picsum.photos/400/300?random=10" class="card-img-top" alt="Produto 1">
+                    <div class="card-body">
+                        <span class="badge bg-primary badge-custom mb-2">Novidade</span>
+                        <h5 class="card-title">Notebook Pro</h5>
+                        <p class="card-text">Notebook de alto desempenho ideal para profissionais e estudantes. Tela de 15,6 polegadas com resolução Full HD.</p>
+                        <p class="text-success fw-bold fs-5">R$ 3.499,00</p>
+                    </div>
+                    <div class="card-footer bg-white border-0">
+                        <button class="btn btn-primary w-100">
+                            <i class="bi bi-cart-plus"></i> Comprar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img src="https://picsum.photos/400/300?random=11" class="card-img-top" alt="Produto 2">
+                    <div class="card-body">
+                        <span class="badge bg-danger badge-custom mb-2">Promoção</span>
+                        <h5 class="card-title">Smartphone X</h5>
+                        <p class="card-text">Smartphone com câmera profissional de 108MP, bateria de longa duração e design premium em vidro.</p>
+                        <p class="text-success fw-bold fs-5">R$ 2.199,00</p>
+                    </div>
+                    <div class="card-footer bg-white border-0">
+                        <button class="btn btn-primary w-100">
+                            <i class="bi bi-cart-plus"></i> Comprar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img src="https://picsum.photos/400/300?random=12" class="card-img-top" alt="Produto 3">
+                    <div class="card-body">
+                        <span class="badge bg-success badge-custom mb-2">Mais Vendido</span>
+                        <h5 class="card-title">Fone Bluetooth</h5>
+                        <p class="card-text">Fone de ouvido sem fio com cancelamento ativo de ruído e até 30 horas de bateria em uma única carga.</p>
+                        <p class="text-success fw-bold fs-5">R$ 599,00</p>
+                    </div>
+                    <div class="card-footer bg-white border-0">
+                        <button class="btn btn-primary w-100">
+                            <i class="bi bi-cart-plus"></i> Comprar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img src="https://picsum.photos/400/300?random=13" class="card-img-top" alt="Produto 4">
+                    <div class="card-body">
+                        <span class="badge bg-warning text-dark badge-custom mb-2">Oferta</span>
+                        <h5 class="card-title">Smartwatch</h5>
+                        <p class="card-text">Relógio inteligente com monitoramento de saúde, GPS integrado e resistência à água. Acompanhe seus treinos.</p>
+                        <p class="text-success fw-bold fs-5">R$ 1.299,00</p>
+                    </div>
+                    <div class="card-footer bg-white border-0">
+                        <button class="btn btn-primary w-100">
+                            <i class="bi bi-cart-plus"></i> Comprar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img src="https://picsum.photos/400/300?random=14" class="card-img-top" alt="Produto 5">
+                    <div class="card-body">
+                        <span class="badge bg-info text-dark badge-custom mb-2">Lançamento</span>
+                        <h5 class="card-title">Tablet Ultra</h5>
+                        <p class="card-text">Tablet com tela de 11 polegadas, perfeito para trabalho e entretenimento. Inclui caneta digital e capa.</p>
+                        <p class="text-success fw-bold fs-5">R$ 2.799,00</p>
+                    </div>
+                    <div class="card-footer bg-white border-0">
+                        <button class="btn btn-primary w-100">
+                            <i class="bi bi-cart-plus"></i> Comprar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100">
+                    <img src="https://picsum.photos/400/300?random=15" class="card-img-top" alt="Produto 6">
+                    <div class="card-body">
+                        <span class="badge bg-secondary badge-custom mb-2">Popular</span>
+                        <h5 class="card-title">Câmera DSLR</h5>
+                        <p class="card-text">Câmera profissional com sensor full-frame, ideal para fotografia e gravação em 4K com qualidade cinematográfica.</p>
+                        <p class="text-success fw-bold fs-5">R$ 4.899,00</p>
+                    </div>
+                    <div class="card-footer bg-white border-0">
+                        <button class="btn btn-primary w-100">
+                            <i class="bi bi-cart-plus"></i> Comprar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="container">
+            <h5><i class="bi bi-bootstrap-fill"></i> Meu Projeto Bootstrap</h5>
+            <p class="mb-2">Desenvolvido com Bootstrap 5</p>
+            <div>
+                <a href="#" class="text-white mx-2"><i class="bi bi-facebook fs-4"></i></a>
+                <a href="#" class="text-white mx-2"><i class="bi bi-instagram fs-4"></i></a>
+                <a href="#" class="text-white mx-2"><i class="bi bi-twitter fs-4"></i></a>
+                <a href="#" class="text-white mx-2"><i class="bi bi-youtube fs-4"></i></a>
+            </div>
+            <p class="mt-3 mb-0">&copy; 2026 Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle (inclui Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
