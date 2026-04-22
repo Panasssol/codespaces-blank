@@ -1,0 +1,41 @@
+@use 'variables' as v;
+
+.container {
+  max-width: v.$container-max-width;
+  width: 100%;
+  margin: 0 auto;
+}
+
+header {
+  background-color: v.$color-primary;
+  position: sticky;
+  top: 0;
+  left: 0;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: v.$spacing-header 0;
+  }
+}
+
+.menu {
+  display: flex;
+
+  li {
+    font-weight: bold;
+    margin-left: v.$spacing-menu;
+
+    a {
+      color: v.$color-white;
+      text-decoration: none;
+    }
+  }
+}
+
+@media screen and (max-width: v.$breakpoint-tablet) {
+  .container {
+    max-width: 80%;
+  }
+}

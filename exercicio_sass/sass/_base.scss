@@ -1,0 +1,16 @@
+@use 'variables' as v;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: v.$font-family-base;
+}
+
+body {
+  background-color: v.$color-background;
+}
+
+li {
+  list-style: none;
+}
