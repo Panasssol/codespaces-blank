@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas com jQuery</title>
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 400px;
+        }
+        
+        form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        input {
+            flex: 1;
+            padding: 8px;
+        }
+
+        button {
+            padding: 8px 15px;
+            cursor: pointer;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            padding: 8px 0;
+            cursor: pointer; /* Muda o cursor para a "mãozinha" indicando que é clicável */
+            user-select: none; /* Evita que o texto seja selecionado acidentalmente ao clicar */
+        }
+
+        /* Classe que será adicionada via jQuery */
+        .riscado {
+            text-decoration: line-through;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Minha Lista</h2>
+
+    <form id="formTarefa">
+        <input type="text" id="inputTarefa" placeholder="Nome da tarefa..." required>
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <ul id="listaDeTarefas">
+        </ul>
+
+    <script>
+        // Garante que o código só rode após a página carregar
+        $(document).ready(function() {
+            
+            // Evento para quando o formulário for submetido
+            $('#formTarefa').on('submit', function(evento) {
+                // Impede que a página recarregue ao clicar em "Cadastrar"
+                evento.preventDefault(); 
+
+                // Captura o texto digitado no input usando o .val()
+                let nomeDaTarefa = $('#inputTarefa').val();
+
+                // 2) Cria um novo elemento <li> com o texto e adiciona na <ul> com o .append()
+                let novoItem = $('<li></li>').text(nomeDaTarefa);
+                $('#listaDeTarefas').append(novoItem);
+
+                // Limpa o input para a próxima tarefa
+                $('#inputTarefa').val('');
+            });
+
+            // 3 e 4) Adiciona o evento de clique para riscar o texto
+            // Nota importante: Como os <li> são criados DEPOIS que a página carrega, 
+            // precisamos usar a "delegação de eventos". Adicionamos o evento na <ul> 
+            // e dizemos para ela observar os cliques nos <li> filhos.
+            $('#listaDeTarefas').on('click', 'li', function() {
+                // O .toggleClass() adiciona a classe se não tiver, e remove se já tiver.
+                // O $(this) representa exatamente o <li> específico que foi clicado.
+                $(this).toggleClass('riscado');
+            });
+
+        });
+    </script>
+</body>
+</html>
