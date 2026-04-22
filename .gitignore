@@ -1,0 +1,14 @@
+# Ignora node_modules em qualquer subpasta
+**/node_modules/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
