@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validação de Formulário</title>
+    <style>
+        /* Um pouco de CSS básico só para não ficar tudo grudado */
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .campo { margin-bottom: 10px; }
+        .mensagem { font-weight: bold; margin-top: 15px; }
+        .sucesso { color: green; }
+        .erro { color: red; }
+    </style>
+</head>
+<body>
+
+    <form id="formNumeros">
+        <div class="campo">
+            <label for="campoA">Campo A:</label>
+            <input type="number" id="campoA" required>
+        </div>
+        
+        <div class="campo">
+            <label for="campoB">Campo B:</label>
+            <input type="number" id="campoB" required>
+        </div>
+
+        <button type="submit">Validar</button>
+    </form>
+
+    <p id="mensagemResultado" class="mensagem"></p>
+
+    <script>
+        // Capturando os elementos do DOM (lembra do querySelector/getElementById?)
+        const form = document.getElementById('formNumeros');
+        const mensagem = document.getElementById('mensagemResultado');
+
+        // Adicionando o evento de "submit" (envio) ao formulário
+        form.addEventListener('submit', function(evento) {
+            
+            // Muito importante: previne que a página recarregue ao clicar no botão
+            evento.preventDefault(); 
+
+            // Pegando os valores digitados e convertendo para número (Number)
+            const valorA = Number(document.getElementById('campoA').value);
+            const valorB = Number(document.getElementById('campoB').value);
+
+            // 3 e 4: Validação (B tem que ser maior que A) e exibição da mensagem
+            if (valorB > valorA) {
+                mensagem.textContent = "✅ Sucesso! O formulário é válido (B é maior que A).";
+                mensagem.className = "mensagem sucesso"; // Aplica a classe verde do CSS
+            } else {
+                mensagem.textContent = "❌ Erro! O formulário é inválido (B deve ser MAIOR que A).";
+                mensagem.className = "mensagem erro"; // Aplica a classe vermelha do CSS
+            }
+        });
+    </script>
+
+</body>
+</html>
