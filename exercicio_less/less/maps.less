@@ -1,0 +1,37 @@
+// ============================================
+// MAPAS (LESS Maps)
+// ============================================
+// Mapas permitem agrupar valores relacionados
+// e acessá-los usando a sintaxe @map[key]
+
+// Mapa de cores do tema
+@theme: {
+    primary:      #182C61;
+    background:   #f5f6fa;
+    white:        #fff;
+    success:      #44bd32;
+    success-hover:#4cd137;
+};
+
+// Mapa de grid para produtos (colunas por breakpoint)
+@grid-products: {
+    desktop-columns: repeat(3, 32.66%);
+    tablet-columns:  repeat(2, 48.5%);
+    desktop-gap:     1%;
+    tablet-gap:      3%;
+    row-gap:         4%;
+};
+
+// Mapa de espaçamentos para o header
+@header-config: {
+    padding-y: 16px;
+    padding-x: 0;
+};
+
+// Mapa de configurações do botão de produto
+@button-config: {
+    padding-y:     8px;
+    padding-x:     0;
+    radius:        8px;
+    margin-top:    8px;
+};

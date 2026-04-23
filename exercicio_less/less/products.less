@@ -1,0 +1,34 @@
+// ============================================
+// PRODUTOS
+// ============================================
+
+.products {
+    margin-top: @spacing-xxl;
+    display: grid;
+    grid-template-columns: @grid-products[desktop-columns];
+    column-gap: @grid-products[desktop-gap];
+    row-gap: @grid-products[row-gap];
+    width: 100%;
+}
+
+.product-item {
+    img {
+        width: 100%;
+        border-radius: @radius-md;
+    }
+}
+
+.product-button {
+    display: block;
+    background-color: @theme[success];
+    color: @theme[white];
+    text-align: center;
+    padding: @button-config[padding-y] @button-config[padding-x];
+    border-radius: @button-config[radius];
+    margin-top: @button-config[margin-top];
+    text-decoration: none;
+
+    &:hover {
+        background-color: @theme[success-hover];
+    }
+}

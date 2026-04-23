@@ -1,0 +1,28 @@
+// ============================================
+// RESPONSIVO
+// ============================================
+// Utiliza o mixin .responsive() que internamente
+// usa ESCAPING (~"...") para construir a media query
+
+// Tablet
+.responsive(@breakpoint-tablet, {
+    .container {
+        max-width: @container-mobile;
+    }
+
+    .products {
+        grid-template-columns: @grid-products[tablet-columns];
+        column-gap: @grid-products[tablet-gap];
+    }
+});
+
+// Mobile
+.responsive(@breakpoint-mobile, {
+    .products {
+        display: block;
+    }
+
+    .product-item {
+        margin-bottom: @spacing-xl;
+    }
+});

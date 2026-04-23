@@ -1,0 +1,23 @@
+// ============================================
+// STYLES.LESS - Arquivo principal
+// ============================================
+// Este arquivo demonstra a DIVISÃO DE ARQUIVOS
+// do LESS, importando todos os parciais que
+// compõem o projeto.
+
+// 1. Variáveis e mapas (devem vir primeiro)
+@import "variables.less";
+@import "maps.less";
+
+// 2. Mixins (usam variáveis, então vêm depois)
+@import "mixins.less";
+
+// 3. Estilos base/reset
+@import "base.less";
+
+// 4. Componentes
+@import "header.less";
+@import "products.less";
+
+// 5. Responsivo (sempre por último para sobrescrever)
+@import "responsive.less";

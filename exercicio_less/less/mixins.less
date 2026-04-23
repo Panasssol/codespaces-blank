@@ -1,0 +1,37 @@
+// ============================================
+// MIXINS (com uso de ESCAPING)
+// ============================================
+// Escaping ~"..." permite que o LESS trate o
+// valor como string literal, sem processá-lo.
+// Útil para media queries, calc() e valores
+// que o LESS interpretaria incorretamente.
+
+// Mixin de media query usando ESCAPING
+// O escaping ~"..." impede que o LESS tente
+// avaliar a expressão de media query
+.responsive(@max-width, @rules) {
+    @query: ~"screen and (max-width: @{max-width})";
+    @media @query {
+        @rules();
+    }
+}
+
+// Mixin para cálculo dinâmico usando escaping
+// Sem o ~"" o LESS tentaria subtrair os valores
+.full-height(@offset: 0) {
+    height: ~"calc(100vh - @{offset}px)";
+}
+
+// Mixin para reset de lista
+.reset-list() {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+// Mixin para centralizar com flexbox
+.flex-between() {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

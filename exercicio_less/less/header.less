@@ -1,0 +1,29 @@
+// ============================================
+// HEADER
+// ============================================
+
+header {
+    background-color: @theme[primary];
+    position: sticky;
+    top: 0;
+    left: 0;
+
+    .container {
+        .flex-between();
+        padding: @header-config[padding-y] @header-config[padding-x];
+    }
+}
+
+.menu {
+    display: flex;
+
+    li {
+        font-weight: bold;
+        margin-left: @spacing-lg;
+
+        a {
+            color: @theme[white];
+            text-decoration: none;
+        }
+    }
+}
