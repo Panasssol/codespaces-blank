@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora Aritmética · Vue</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,900;1,9..144,500&family=JetBrains+Mono:wght@300;400;600;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+<style>
+  :root {
+    --ink: #1a1512;
+    --paper: #f4ede2;
+    --paper-2: #ebe1d1;
+    --rule: #1a1512;
+    --accent: #d94e1f;
+    --accent-soft: #e8a47a;
+    --muted: #7a6e5e;
+    --shadow: rgba(26, 21, 18, 0.12);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    min-height: 100vh;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'JetBrains Mono', monospace;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background-image:
+      radial-gradient(ellipse at top left, rgba(217, 78, 31, 0.08), transparent 50%),
+      radial-gradient(ellipse at bottom right, rgba(26, 21, 18, 0.06), transparent 50%);
+    background-attachment: fixed;
+    padding: 2rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* grain texture */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.35;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  #app {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 680px;
+  }
+
+  .masthead {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1.5px solid var(--rule);
+    margin-bottom: 0;
+  }
+
+  .masthead .meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+  }
+  .masthead .meta.right { text-align: right; }
+
+  .masthead .logo {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-style: italic;
+    font-size: 1.4rem;
+    letter-spacing: -0.02em;
+  }
+
+  .title-block {
+    padding: 2.5rem 0 2rem;
+    border-bottom: 4px double var(--rule);
+    position: relative;
+  }
+
+  .title-block h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(3rem, 9vw, 5.5rem);
+    line-height: 0.92;
+    letter-spacing: -0.04em;
+  }
+
+  .title-block h1 .ital {
+    font-style: italic;
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .title-block .subtitle {
+    margin-top: 1rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .title-block .subtitle::before,
+  .title-block .subtitle::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--muted);
+    opacity: 0.4;
+  }
+
+  .panel {
+    padding: 2.5rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem 2.5rem;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    position: relative;
+  }
+
+  .field.span-2 { grid-column: 1 / -1; }
+
+  .field label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .field label .tag {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: normal;
+    text-transform: none;
+    color: var(--accent);
+  }
+
+  .field input,
+  .field select {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.4rem;
+    font-weight: 400;
+    padding: 0.6rem 0;
+    background: transparent;
+    border: none;
+    border-bottom: 1.5px solid var(--rule);
+    color: var(--ink);
+    outline: none;
+    width: 100%;
+    transition: border-color 0.2s ease, padding 0.2s ease;
+  }
+
+  .field input:focus,
+  .field select:focus {
+    border-bottom-color: var(--accent);
+    border-bottom-width: 2px;
+  }
+
+  .field input::placeholder {
+    color: var(--muted);
+    opacity: 0.5;
+  }
+
+  .field select {
+    appearance: none;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%231a1512' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.25rem center;
+    padding-right: 2rem;
+  }
+
+  /* hide spinner on number inputs */
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type=number] { -moz-appearance: textfield; }
+
+  .result-section {
+    margin-top: 0;
+    padding: 2rem 2rem 2.5rem;
+    background: var(--ink);
+    color: var(--paper);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .result-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--accent) 0, var(--accent) 12px,
+      transparent 12px, transparent 24px
+    );
+  }
+
+  .result-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: var(--accent-soft);
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .equation {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--accent-soft);
+    opacity: 0.8;
+    margin-bottom: 1rem;
+    min-height: 1.6rem;
+    word-break: break-all;
+  }
+
+  .result-value {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(3rem, 10vw, 5.5rem);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    word-break: break-all;
+    transition: color 0.3s ease;
+  }
+
+  .result-value.error {
+    color: var(--accent);
+    font-style: italic;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 600;
+  }
+
+  .result-value.pending {
+    color: var(--muted);
+    font-style: italic;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+  }
+
+  .result-value .unit {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.35em;
+    font-weight: 300;
+    opacity: 0.5;
+    margin-left: 0.5rem;
+    letter-spacing: 0.1em;
+  }
+
+  .footer {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+  }
+
+  /* subtle entrance */
+  .enter {
+    animation: slideIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+  .enter-1 { animation-delay: 0.05s; }
+  .enter-2 { animation-delay: 0.15s; }
+  .enter-3 { animation-delay: 0.25s; }
+  .enter-4 { animation-delay: 0.35s; }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 560px) {
+    .panel { grid-template-columns: 1fr; gap: 1.5rem; padding: 1.5rem 0; }
+    .masthead .meta { font-size: 0.6rem; }
+    .result-section { padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div id="app">
+  <header class="masthead enter enter-1">
+    <div class="meta">Vol. I · Nº 01</div>
+    <div class="logo">Calc<span style="color:var(--accent);">·</span>Aritmética</div>
+    <div class="meta right">{{ dataAtual }}</div>
+  </header>
+
+  <section class="title-block enter enter-2">
+    <h1>Dois números, <span class="ital">uma</span> operação.</h1>
+    <div class="subtitle">um pequeno instrumento de cálculo</div>
+  </section>
+
+  <section class="panel">
+    <div class="field enter enter-3">
+      <label for="n1">
+        <span>Primeiro operando</span>
+        <span class="tag">a</span>
+      </label>
+      <input
+        id="n1"
+        type="number"
+        step="any"
+        v-model="numero1"
+        placeholder="0,00"
+        autocomplete="off"
+      >
+    </div>
+
+    <div class="field enter enter-3">
+      <label for="n2">
+        <span>Segundo operando</span>
+        <span class="tag">b</span>
+      </label>
+      <input
+        id="n2"
+        type="number"
+        step="any"
+        v-model="numero2"
+        placeholder="0,00"
+        autocomplete="off"
+      >
+    </div>
+
+    <div class="field span-2 enter enter-4">
+      <label for="op">
+        <span>Operação aritmética</span>
+        <span class="tag">ƒ</span>
+      </label>
+      <select id="op" v-model="operacao">
+        <option value="soma">Adição  ( a + b )</option>
+        <option value="subtracao">Subtração  ( a − b )</option>
+        <option value="multiplicacao">Multiplicação  ( a × b )</option>
+        <option value="divisao">Divisão  ( a ÷ b )</option>
+      </select>
+    </div>
+  </section>
+
+  <section class="result-section enter enter-4">
+    <div class="result-label">
+      <span>Resultado</span>
+      <span>{{ simboloOperacao }}</span>
+    </div>
+    <div class="equation">{{ equacaoFormatada }}</div>
+    <div :class="['result-value', classeResultado]">
+      {{ resultadoFormatado }}
+    </div>
+  </section>
+
+  <footer class="footer enter enter-4">
+    <span>Atualização automática</span>
+    <span>Vue · 3</span>
+  </footer>
+</div>
+
+<script>
+  const { createApp, ref, computed } = Vue;
+
+  createApp({
+    setup() {
+      const numero1 = ref('');
+      const numero2 = ref('');
+      const operacao = ref('soma');
+
+      const simbolos = {
+        soma: '+',
+        subtracao: '−',
+        multiplicacao: '×',
+        divisao: '÷'
+      };
+
+      const dataAtual = computed(() => {
+        const d = new Date();
+        return d.toLocaleDateString('pt-BR', {
+          day: '2-digit', month: 'short', year: 'numeric'
+        }).toUpperCase();
+      });
+
+      const simboloOperacao = computed(() => simbolos[operacao.value]);
+
+      const ambosPreenchidos = computed(() => {
+        return numero1.value !== '' && numero2.value !== ''
+            && !isNaN(parseFloat(numero1.value))
+            && !isNaN(parseFloat(numero2.value));
+      });
+
+      const resultadoBruto = computed(() => {
+        if (!ambosPreenchidos.value) return null;
+
+        const a = parseFloat(numero1.value);
+        const b = parseFloat(numero2.value);
+
+        switch (operacao.value) {
+          case 'soma':           return a + b;
+          case 'subtracao':      return a - b;
+          case 'multiplicacao':  return a * b;
+          case 'divisao':
+            if (b === 0) return 'ERR_DIV_ZERO';
+            return a / b;
+          default: return null;
+        }
+      });
+
+      const formatarNumero = (n) => {
+        // formato brasileiro, até 10 decimais, remove zeros à direita
+        if (Number.isInteger(n)) return n.toLocaleString('pt-BR');
+        const fixed = parseFloat(n.toFixed(10));
+        return fixed.toLocaleString('pt-BR', { maximumFractionDigits: 10 });
+      };
+
+      const resultadoFormatado = computed(() => {
+        if (resultadoBruto.value === null) return 'aguardando dados…';
+        if (resultadoBruto.value === 'ERR_DIV_ZERO') return 'indefinido · divisão por zero';
+        return formatarNumero(resultadoBruto.value);
+      });
+
+      const classeResultado = computed(() => {
+        if (resultadoBruto.value === null) return 'pending';
+        if (resultadoBruto.value === 'ERR_DIV_ZERO') return 'error';
+        return '';
+      });
+
+      const equacaoFormatada = computed(() => {
+        const a = numero1.value === '' ? 'a' : formatarNumero(parseFloat(numero1.value));
+        const b = numero2.value === '' ? 'b' : formatarNumero(parseFloat(numero2.value));
+        return `${a}  ${simboloOperacao.value}  ${b}  =`;
+      });
+
+      return {
+        numero1, numero2, operacao,
+        simboloOperacao, dataAtual,
+        resultadoFormatado, classeResultado, equacaoFormatada
+      };
+    }
+  }).mount('#app');
+</script>
+
+</body>
+</html>
