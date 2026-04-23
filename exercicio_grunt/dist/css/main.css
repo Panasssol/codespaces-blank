@@ -1,0 +1,26 @@
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+body .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+body .container h1 {
+  color: #3498db;
+  font-size: 2em;
+}
+body .container .botao {
+  background-color: #2ecc71;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  cursor: pointer;
+}
+body .container .botao:hover {
+  background-color: #25a25a;
+}
+/*# sourceMappingURL=dist/css/main.css.map */

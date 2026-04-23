@@ -1,0 +1,41 @@
+// Variáveis
+@cor-primaria: #3498db;
+@cor-secundaria: #2ecc71;
+@fonte-principal: 'Arial', sans-serif;
+@espacamento: 20px;
+
+// Mixins
+.borda-arredondada(@raio: 5px) {
+    border-radius: @raio;
+    -webkit-border-radius: @raio;
+    -moz-border-radius: @raio;
+}
+
+// Estilos
+body {
+    font-family: @fonte-principal;
+    margin: 0;
+    padding: @espacamento;
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+
+        h1 {
+            color: @cor-primaria;
+            font-size: 2em;
+        }
+
+        .botao {
+            background-color: @cor-secundaria;
+            color: white;
+            padding: 10px 20px;
+            .borda-arredondada(8px);
+            cursor: pointer;
+
+            &:hover {
+                background-color: darken(@cor-secundaria, 10%);
+            }
+        }
+    }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "projeto-grunt",
+  "version": "1.0.0",
+  "description": "Exercício de automação de tarefas com Grunt",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "build": "grunt build"
+  },
+  "devDependencies": {
+    "grunt": "^1.6.2",
+    "grunt-contrib-less": "^3.0.0",
+    "grunt-contrib-uglify": "^5.2.2",
+    "grunt-contrib-watch": "^1.1.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
