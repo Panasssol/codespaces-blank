@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+// Bloco: lista de produtos (grid container)
+.produtos {
+    max-width: 640px;
+    width: 100%;
+    margin: 56px auto;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-column-gap: 1%;
+}
+
+// Bloco: produto (card individual)
+.produto {
+
+    // Elemento: imagem do produto
+    &__imagem {
+        width: 100%;
+    }
+
+    // Elemento: nome do produto
+    &__nome {
+        font-size: 1.2em;
+        margin: 8px 0;
+    }
+
+    // Elemento: descrição do produto
+    &__descricao {
+        color: gray;
+    }
+
+    // Modificador: produto em destaque
+    &--em-destaque {
+        border: 2px solid gold;
+        padding: 8px;
+        background-color: #ffff42;
+    }
+}
