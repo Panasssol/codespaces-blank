@@ -1,0 +1,25 @@
+{
+  "name": "cypress-agenda-contatos",
+  "version": "1.0.0",
+  "description": "Projeto de testes automatizados com Cypress para a aplicação Agenda de Contatos",
+  "main": "index.js",
+  "scripts": {
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "test": "cypress run",
+    "test:headed": "cypress run --headed",
+    "test:chrome": "cypress run --browser chrome"
+  },
+  "keywords": [
+    "cypress",
+    "testes",
+    "automacao",
+    "e2e",
+    "ebac"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.6.0"
+  }
+}

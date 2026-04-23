@@ -1,0 +1,17 @@
+{
+  "contatoOriginal": {
+    "nome": "Joao Teste Inclusao",
+    "email": "joao.inclusao@teste.com",
+    "telefone": "51999990000"
+  },
+  "contatoAtualizado": {
+    "nome": "Joao Teste Editado",
+    "email": "joao.editado@teste.com",
+    "telefone": "51988887777"
+  },
+  "contatoParaRemover": {
+    "nome": "Maria Teste Remocao",
+    "email": "maria.remocao@teste.com",
+    "telefone": "51977776666"
+  }
+}
