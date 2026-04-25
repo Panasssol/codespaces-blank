@@ -1,0 +1,460 @@
+/* ============================================
+   LETHAL TEMPO#DEMON — League of Legends Theme
+   Adaptado da estrutura do restaurante
+   ============================================ */
+
+/* ---------- VARIÁVEIS GLOBAIS ---------- */
+:root {
+    --gold:       #c89b3c;
+    --gold-light: #f0d174;
+    --dark-bg:    #06080f;
+    --section-bg: #0f1923;
+    --card-bg:    #101820;
+    --border:     #1e2d3d;
+    --text:       #ccd3d9;
+    --text-light: #8a9bb0;
+}
+
+/* ---------- BASE ---------- */
+body {
+    font-family: 'Rajdhani', sans-serif;
+    background-color: var(--dark-bg);
+    color: var(--text);
+    font-size: 1.05rem;
+}
+
+/* ---------- NAVBAR ---------- */
+.navbar {
+    background-color: #060b12;
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 2px 20px rgba(200, 155, 60, 0.15);
+}
+
+#cabecalho .nav .nav-link.active {
+    background-color: var(--gold);
+    color: #06080f;
+}
+
+#cabecalho .nav .nav-link,
+.navbar-brand,
+.navbar-brand:hover {
+    color: var(--text);
+}
+
+#cabecalho .nav .nav-link:hover {
+    color: var(--gold);
+}
+
+.navbar-toggler {
+    background-color: #1a2535;
+    border: 1px solid var(--border);
+}
+
+.navbar-brand {
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+}
+
+.navbar-brand .tagline {
+    color: var(--gold);
+    font-size: 1rem;
+    font-weight: 400;
+    opacity: 0.85;
+}
+
+/* ---------- SEÇÃO TITLE (Cinzel) ---------- */
+.section-title {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 1.5px;
+}
+
+/* ---------- TEXTO COLORIDO (ouro) ---------- */
+.text-colored {
+    color: var(--gold);
+}
+
+.text-muted-custom {
+    color: var(--text-light);
+}
+
+/* ---------- SEÇÕES COM FUNDO ESCURO ---------- */
+#sobre-o-restaurante,
+#cardapio {
+    background-color: var(--section-bg);
+}
+
+#eventos,
+#fale-conosco {
+    background-color: var(--dark-bg);
+}
+
+/* ---------- CAROUSEL ---------- */
+.carousel-item img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    object-position: center top;
+    filter: brightness(0.55);
+}
+
+.carousel-caption-custom {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 10;
+}
+
+.carousel-caption-custom h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 0 0 20px rgba(200, 155, 60, 0.8);
+    margin: 6px 0 4px;
+}
+
+.carousel-caption-custom p {
+    color: #ddd;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.champ-badge {
+    background: rgba(200, 155, 60, 0.85);
+    color: #06080f;
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+}
+
+/* ---------- PLAYER CARD IMG ---------- */
+.player-card-img {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid var(--border);
+}
+
+.player-card-img img {
+    height: 360px;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.rank-badge-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(6,8,15,0.95));
+    padding: 20px 16px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.rank-text {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    color: var(--gold);
+    font-size: 1rem;
+    letter-spacing: 2px;
+}
+
+.lp-text {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+/* ---------- PLAYER STATS LIST ---------- */
+.player-stats-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+}
+
+.player-stats-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-weight: 600;
+    font-size: 1.05rem;
+}
+
+.player-stats-list li:last-child {
+    border-bottom: none;
+}
+
+/* ---------- SEASON CARDS ---------- */
+.season-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 28px 20px;
+    height: 100%;
+    transition: border-color 0.3s, transform 0.2s;
+}
+
+.season-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-4px);
+}
+
+.highlight-card {
+    border-color: rgba(200, 155, 60, 0.5);
+    box-shadow: 0 0 20px rgba(200, 155, 60, 0.1);
+}
+
+.season-emblem {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 8px rgba(200,155,60,0.4));
+}
+
+.emblem-fallback {
+    font-size: 4rem;
+    text-align: center;
+}
+
+.rank-chip {
+    display: block;
+    width: fit-content;
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 4px 16px;
+    border-radius: 20px;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.rank-gold     { background: rgba(200,155,60,0.2); color: #f0d174; border: 1px solid #c89b3c; }
+.rank-diamond  { background: rgba(80,200,255,0.1); color: #7cd9f5; border: 1px solid #4ac0e0; }
+.rank-platinum { background: rgba(100,200,180,0.1); color: #7de8cc; border: 1px solid #4db89e; }
+
+/* ---------- TABS CAMPEÕES ---------- */
+.nav-cardapio .nav-link.active {
+    background-color: var(--gold);
+    color: #06080f;
+}
+
+.nav-cardapio .nav-link {
+    color: var(--text-light);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-weight: 700;
+    font-family: 'Rajdhani', sans-serif;
+    transition: all 0.2s;
+}
+
+.nav-cardapio .nav-link:hover {
+    color: var(--gold);
+    border-color: var(--gold);
+}
+
+/* ---------- CHAMPION CARDS ---------- */
+.champ-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+
+.champ-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-6px);
+    box-shadow: 0 8px 24px rgba(200,155,60,0.15);
+}
+
+.champ-img-wrap {
+    position: relative;
+}
+
+.champ-img-wrap img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s;
+}
+
+.champ-card:hover .champ-img-wrap img {
+    transform: scale(1.05);
+}
+
+.champ-rank-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(6,8,15,0.85);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 4px;
+    border: 1px solid var(--gold);
+}
+
+.champ-info {
+    padding: 12px 14px 16px;
+}
+
+.champ-info h5 {
+    margin-bottom: 6px;
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+}
+
+.winrate-bar {
+    height: 5px;
+    background: var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 6px;
+}
+
+.winrate-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    border-radius: 4px;
+}
+
+.champ-stats {
+    font-size: 0.82rem;
+    color: var(--text-light);
+    margin-bottom: 6px;
+}
+
+.role-tag {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--gold);
+    text-transform: uppercase;
+    border: 1px solid rgba(200,155,60,0.3);
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: rgba(200,155,60,0.06);
+}
+
+/* ---------- STAT BLOCKS (seção stats) ---------- */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.stat-block {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 12px;
+    text-align: center;
+}
+
+.highlight-stat {
+    border-color: rgba(200,155,60,0.5);
+    background: rgba(200,155,60,0.05);
+}
+
+.stat-number {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--text-light);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ---------- BEST CHAMP HIGHLIGHT ---------- */
+.best-champ-highlight {
+    background: var(--card-bg);
+    border: 1px solid rgba(200,155,60,0.4);
+    border-radius: 10px;
+}
+
+/* ---------- SOCIAL LINKS ---------- */
+.social-links {
+    list-style: none;
+    padding: 0;
+}
+
+.social-links li {
+    list-style: none;
+    display: inline;
+}
+
+.social-links a {
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.social-links a:hover {
+    opacity: 0.7;
+}
+
+/* ---------- HISTORY BADGES ---------- */
+.history-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.history-badge {
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+}
+
+.history-badge.gold     { background: rgba(200,155,60,0.15); color: #f0d174; border: 1px solid #c89b3c; }
+.history-badge.diamond  { background: rgba(80,200,255,0.08); color: #7cd9f5; border: 1px solid #4ac0e0; }
+.history-badge.platinum { background: rgba(100,200,180,0.08); color: #7de8cc; border: 1px solid #4db89e; }
+
+/* ---------- FORM (Seção de stats) ---------- */
+#fale-conosco strong {
+    color: var(--text);
+}
+
+/* ---------- FOOTER ---------- */
+.site-footer {
+    background: #060b12;
+    border-top: 1px solid var(--border);
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* ---------- RESPONSIVO ---------- */
+@media (max-width: 767px) {
+    .carousel-item img {
+        height: 260px;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .carousel-caption-custom h3 {
+        font-size: 1.5rem;
+    }
+}
